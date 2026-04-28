@@ -25,16 +25,16 @@ const MainTitle = memo(() => (
       <span className="relative inline-block">
         <span className="absolute -inset-2 bg-gradient-to-r from-[#6366f1] to-[#a855f7] blur-2xl opacity-20"></span>
         <span className="relative bg-gradient-to-r from-white via-blue-100 to-purple-200 bg-clip-text text-transparent">
-          Back-end 
+          Cinematographer
         </span>
       </span>
       <br />
-      <span className="relative inline-block mt-2">
+      {/* <span className="relative inline-block mt-2">
         <span className="absolute -inset-2 bg-gradient-to-r from-[#6366f1] to-[#a855f7] blur-2xl opacity-20"></span>
         <span className="relative bg-gradient-to-r from-[#6366f1] to-[#a855f7] bg-clip-text text-transparent">
           Developer
         </span>
-      </span>
+      </span> */}
     </h1>
   </div>
 ));
@@ -77,12 +77,12 @@ const SocialLink = memo(({ icon: Icon, link }) => (
 const TYPING_SPEED = 100;
 const ERASING_SPEED = 50;
 const PAUSE_DURATION = 2000;
-const WORDS = ["Network & Telecom Student", "Tech Enthusiast"];
+const WORDS = ["Camera Opeator", "Video Editor", "Sound Opeator","Assistant Camera Operator,"];
 const TECH_STACK = ["Express", "Javascript", "Node.js", "Tailwind", "MYSQL", "MongoDB" , "Nextjs"];
 const SOCIAL_LINKS = [
-  { icon: Github, link: "https://github.com/lynakimhay" },
+  // { icon: Github, link: "https://github.com/lynakimhay" },
   // { icon: Linkedin, link: "https://www.linkedin.com/in/ekizr/" },
-  { icon: Instagram, link: "https://www.instagram.com/lynakimhai?igsh=ZWdqZG5kZHFjNjRk&utm_source=qr" }
+  { icon: Instagram, link: "https://www.instagram.com/monytwelve?igsh=OXRsMnA0YTVmbGk4" }
 ];
 
 const Home = () => {
@@ -183,7 +183,7 @@ const Home = () => {
                 <p className="text-base md:text-lg text-gray-400 max-w-xl leading-relaxed font-light"
                   data-aos="fade-up"
                   data-aos-delay="1000">
-The backend is the data and infrastructure that make your application work. It stores and processes application data for your users.                </p>
+A professional responsible for capturing the visual elements of a film or video, including camera work, lighting, and shot composition.</p>
 
                 {/* Tech Stack */}
                 <div className="flex flex-wrap gap-3 justify-start" data-aos="fade-up" data-aos-delay="1200">

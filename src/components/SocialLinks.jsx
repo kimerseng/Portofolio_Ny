@@ -5,15 +5,16 @@ import {
   Instagram,
   Youtube,
   ExternalLink,
+  PhoneCall,
 } from "lucide-react";
 
 const socialLinks = [
   {
-    name: "LinkedIn",
-    displayName: "Let's Connect",
-    subText: "kimhayly",
-    icon: Linkedin,
-    url: "https://ngl.link/lynakimhay",
+    name: "Phone Number",
+    displayName: "Phone Number",
+    subText: "+855-863-845-02",
+    icon: PhoneCall,
+    // url: "https://ngl.link/lynakimhay",
     color: "#0A66C2",
     gradient: "from-[#0A66C2] to-[#0077B5]",
     isPrimary: true,
@@ -21,9 +22,9 @@ const socialLinks = [
   {
     name: "Instagram",
     displayName: "Instagram",
-    subText: "@lynakimhay",
+    subText: "@monytwelve",
     icon: Instagram,
-    url: "https://www.instagram.com/lynakimhai?igsh=ZWdqZG5kZHFjNjRk&utm_source=qr",
+    url: "https://www.instagram.com/monytwelve?igsh=OXRsMnA0YTVmbGk4",
     color: "#E4405F",
     gradient: "from-[#833AB4] via-[#E4405F] to-[#FCAF45]",
   },
@@ -40,7 +41,7 @@ const socialLinks = [
   {
     name: "TikTok",
     displayName: "Tiktok",
-    subText: "@luvuuuuu7",
+    subText: "@monytwelve",
     icon: ({ className, ...props }) => (
       <svg
         width="24px"
@@ -78,7 +79,7 @@ const socialLinks = [
         </g>
       </svg>
     ),
-    url: "https://www.tiktok.com/@luvuuuuu7?_r=1&_d=e711m4ldicmdab&sec_uid=MS4wLjABAAAAxW-hoV85qj7sYb2JDIJoxcS9Eo_Bvt0t14ifT3BdfWE5Wuc7ugcgEYeDJAOjWU68&share_author_id=6870374618051576833&sharer_language=en&source=h5_t&u_code=debek3a20gf1a6&ug_btm=b8727,b0&social_share_type=4&utm_source=copy&sec_user_id=MS4wLjABAAAAxW-hoV85qj7sYb2JDIJoxcS9Eo_Bvt0t14ifT3BdfWE5Wuc7ugcgEYeDJAOjWU68&tt_from=copy&utm_medium=ios&utm_campaign=client_share&enable_checksum=1&user_id=6870374618051576833&share_link_id=1DF3DC2C-4B54-4AC8-BB75-180B6822BD9C&share_app_id=1180",
+    url: "https://www.tiktok.com/@monytwelve?_r=1&_t=ZS-95ubljW1sRQ",
     color: "black",
     gradient: "from-[#000000] via-[#25F4EE] to-[#FE2C55]",
   },
@@ -87,7 +88,7 @@ const socialLinks = [
 const SocialLinks = () => {
   const linkedIn = socialLinks.find((link) => link.isPrimary);
   const otherLinks = socialLinks.filter((link) => !link.isPrimary);
-  const [instagram, github, tiktok] = otherLinks;
+  const [instagram, telegram, tiktok] = otherLinks;
 
   return (
     <div className="w-full bg-gradient-to-br from-white/10 to-white/5 rounded-2xl p-6 py-8 backdrop-blur-xl">
@@ -213,62 +214,8 @@ const SocialLinks = () => {
           ))}
         </div>
 
-        {/* Third Row - GitHub & TikTok */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {[github].map((link) => (
-            <a
-              key={link.name}
-              href={link.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group relative flex items-center gap-3 p-4 rounded-xl 
-                       bg-white/5 border border-white/10 overflow-hidden
-                       hover:border-white/20 transition-all duration-500"
-            >
-              <div
-                className={`absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-500
-                             bg-gradient-to-r ${link.gradient}`}
-              />
-
-              <div className="relative flex items-center justify-center">
-                <div
-                  className="absolute inset-0 opacity-20 rounded-lg transition-all duration-500
-                               group-hover:scale-125 group-hover:opacity-30"
-                  style={{ backgroundColor: link.color }}
-                />
-                <div className="relative p-2 rounded-lg">
-                  <link.icon
-                    className="w-5 h-5 transition-all duration-500 group-hover:scale-110"
-                    style={{ color: link.color }}
-                  />
-                </div>
-              </div>
-
-              {/* Text Container */}
-              <div className="flex flex-col min-w-0">
-                <span className="text-sm font-bold text-gray-200 group-hover:text-white transition-colors duration-300">
-                  {link.displayName}
-                </span>
-                <span className="text-xs text-gray-400 truncate group-hover:text-gray-300 transition-colors duration-300">
-                  {link.subText}
-                </span>
-              </div>
-
-              <ExternalLink
-                className="w-4 h-4 text-gray-500 group-hover:text-white ml-auto
-                                     opacity-0 group-hover:opacity-100 transition-all duration-300
-                                     transform group-hover:translate-x-0 -translate-x-2"
-              />
-
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 pointer-events-none overflow-hidden">
-                <div
-                  className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent
-                              translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"
-                />
-              </div>
-            </a>
-          ))}
-        </div>
+       
+        
       </div>
     </div>
   );
