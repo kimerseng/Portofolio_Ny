@@ -6,6 +6,7 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
+import { motion, AnimatePresence } from "framer-motion";
 
 import CardProject from "../components/CardProject";
 import TechStackIcon from "../components/TechStackIcon";
@@ -18,21 +19,24 @@ import { Code, Award, Boxes } from "lucide-react";
 import { Photo, PhotoAlbum } from "@mui/icons-material";
 
 /* ---------------- Toggle Button ---------------- */
-const ToggleButton = ({ onClick, isShowingMore }) => (
-  <div className="mt-6 flex justify-center">
-
-  <button
-    onClick={onClick}
-    className="px-3 py-1.5 text-slate-300 hover:text-white text-sm font-medium transition-all flex items-center gap-2 bg-white/5 hover:bg-white/10 rounded-md border border-white/10"
-  >
-    {isShowingMore ? "See Less" : "See More"}
-  </button>
-  </div>
-);
+const ToggleButton = ({ onClick, isShowingMore, show }) => {
+  if (!show) return null;
+  return (
+    <div className="mt-6 flex justify-center">
+      <button
+        onClick={onClick}
+        className="px-3 py-1.5 text-slate-300 hover:text-white text-sm font-medium transition-all flex items-center gap-2 bg-white/5 hover:bg-white/10 rounded-md border border-white/10"
+      >
+        {isShowingMore ? "See Less" : "See More"}
+      </button>
+    </div>
+  );
+};
 
 ToggleButton.propTypes = {
   onClick: PropTypes.func,
   isShowingMore: PropTypes.bool,
+  show: PropTypes.bool,
 };
 
 /* ---------------- Tab Panel ---------------- */
@@ -66,72 +70,87 @@ const techStacks = [
 
 const projects = [
   {
-    image:"/worthy.png",
+    image: "/new.png",
+    name: "ABA Chines New Year 2026",
+    description: "Simple calculator project.",
+    tech: "HTML, JS, Tailwind",
+    link: "https://www.youtube.com/watch?v=YCsXB14MPl4",
+  },
+     {
+    image: "/beer.png",
+    name: "Greed life beer",
+    description: "Simple calculator project.",
+    tech: "HTML, JS, Tailwind",
+    link: "https://www.youtube.com/watch?v=AACHLRIi04I",
+  },
+  {
+    image: "/worthy.png",
     name: "I am Worthy.",
     description: "Shorten long URLs with analytics.",
     tech: "React, Node.js, MongoDB",
     link: "https://youtu.be/WxgtNsXbRM4",
   },
   {
-    image:"/basket.png",
+    image: "/basket.png",
     name: "Flat Bamboo Basket",
     description: "Simple calculator project.",
     tech: "HTML, JS, Tailwind",
     link: "https://youtu.be/3HdXF1cx_to",
   },
   {
-    image:"/later.png",
+    image: "/later.png",
     name: "Regret Later",
     description: "Simple calculator project.",
     tech: "HTML, JS, Tailwind",
     link: "https://youtu.be/vGE6JmfMnYc",
   },
   {
-    image:"/night.png",
+    image: "/night.png",
     name: "At Night",
     description: "Simple calculator project.",
     tech: "HTML, JS, Tailwind",
     link: "https://youtu.be/sdkHgWLPNwc",
   },
   {
-    image:"/form.png",
+    image: "/form.png",
     name: "From What ?",
     description: "Simple calculator project.",
     tech: "HTML, JS, Tailwind",
     link: "https://youtu.be/q18xUt5zz64",
   },
   {
-    image:"/water.png",
+    image: "/water.png",
     name: "Water Festival",
     description: "Simple calculator project.",
     tech: "HTML, JS, Tailwind",
     link: "https://youtu.be/Hr62GqtiLMY",
   },
   {
-    image:"/living.png",
+    image: "/living.png",
     name: "RLiving and Buddhism",
     description: "Simple calculator project.",
     tech: "HTML, JS, Tailwind",
     link: "https://youtu.be/T37HOpZaHew",
   },
   {
-    image:"/little.png",
+    image: "/little.png",
     name: "Little by little",
     description: "Simple calculator project.",
     tech: "HTML, JS, Tailwind",
     link: "https://youtu.be/er5jD1PGLtA",
   },
   {
-    image:"/content.png",
+    image: "/content.png",
     name: "Video Content",
     description: "Simple calculator project.",
     tech: "HTML, JS, Tailwind",
     link: "https://youtu.be/-uOu9gVXmeE",
   },
+
 ];
 
 const certificates = [
-  { image: "/លីណា គឹមហៃ_page-0001.jpg" },
+  { image: "/certificate.png" },
 ];
 
 /* ---------------- Main Component ---------------- */
@@ -167,14 +186,6 @@ export default function FullWidthTabs() {
     else setShowAllCertificates((p) => !p);
   };
 
-  const displayedProjects = showAllProjects
-    ? projects
-    : projects.slice(0, initialItems);
-
-  const displayedCertificates = showAllCertificates
-    ? certificates
-    : certificates.slice(0, initialItems);
-
   return (
     <div className="md:px-[10%] px-[5%] w-full bg-[#030014]" id="Portofolio">
       {/* HEADER */}
@@ -194,16 +205,16 @@ export default function FullWidthTabs() {
             textColor="secondary"
             indicatorColor="secondary"
           >
-            <Tab icon={<Code />} label="Projects" />
-            <Tab icon={<Award />} label="Certificates" />
-            <Tab icon={<Photo />} label="Photo " />
+            <Tab icon={<Code />} label="Projects" sx={{ color: "#ffffffff" }} />
+<Tab icon={<Award />} label="Certificates" sx={{ color: "#ffff" }} />
+<Tab icon={<Photo />} label="Photo" sx={{ color: "#ffff" }} />
           </Tabs>
         </AppBar>
 
         {/* PANELS (NO SwipeableViews anymore) */}
         <TabPanel value={value} index={0}>
           <div className="grid md:grid-cols-3 gap-5">
-            {displayedProjects.map((p, i) => (
+            {projects.slice(0, initialItems).map((p, i) => (
               <CardProject
                 key={i}
                 Img={p.image}
@@ -213,6 +224,26 @@ export default function FullWidthTabs() {
                 id={p.tech}
               />
             ))}
+            <AnimatePresence>
+              {showAllProjects &&
+                projects.slice(initialItems).map((p, i) => (
+                  <motion.div
+                    key={`extra-project-${i}`}
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, scale: 0.95 }}
+                    transition={{ duration: 0.4, delay: i * 0.05 }}
+                  >
+                    <CardProject
+                      Img={p.image}
+                      Title={p.name}
+                      Description={p.description}
+                      Link={p.link}
+                      id={p.tech}
+                    />
+                  </motion.div>
+                ))}
+            </AnimatePresence>
           </div>
 
           <ToggleButton
@@ -224,14 +255,28 @@ export default function FullWidthTabs() {
 
         <TabPanel value={value} index={1}>
           <div className="grid md:grid-cols-3 gap-5">
-            {displayedCertificates.map((c, i) => (
-              <Certificate key={i} ImgSertif={c.image} />
-            ))}
+            <AnimatePresence>
+              {(showAllCertificates
+                ? certificates
+                : certificates.slice(0, initialItems)
+              ).map((c, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
+                  transition={{ duration: 0.4 }}
+                >
+                  <Certificate ImgSertif={c.image} />
+                </motion.div>
+              ))}
+            </AnimatePresence>
           </div>
 
           <ToggleButton
             onClick={() => toggleShowMore("certificates")}
             isShowingMore={showAllCertificates}
+            show={certificates.length > initialItems}
           />
         </TabPanel>
 
@@ -250,3 +295,4 @@ export default function FullWidthTabs() {
     </div>
   );
 }
+
